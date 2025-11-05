@@ -1,7 +1,7 @@
 use std::io;
 
 fn main() {
-    println!("==================== MENU ====================");
+    println!("================== (MENU) ====================");
     println!("P = Pounded Yam & Edinkaiko Soup  - ₦3200");
     println!("F = Fried Rice & Chicken          - ₦3000");
     println!("A = Amala & Ewedu Soup            - ₦2500");
@@ -17,8 +17,9 @@ fn main() {
         .expect("Failed to read input");
 
     let food_type = food_type.trim().to_uppercase();
-
+    //we will check if users input is correct later
     // Check if the food type is valid right away
+    //I will use match for this since no rules
     let price = match food_type.as_str() {
         "P" => 3200,
         "F" => 3000,
@@ -26,7 +27,7 @@ fn main() {
         "E" => 2000,
         "W" => 2500,
         _ => {
-            println!("\n❌ Invalid food type selected. Please restart and choose from (P, F, A, E, W).");
+            println!("\n Invalid food type selected. Please restart and choose from (P, F, A, E, W).");
             return;
         }
     };
@@ -41,7 +42,7 @@ fn main() {
     let quantity: i32 = match qty_input.trim().parse() {
         Ok(num) if num > 0 => num,
         _ => {
-            println!("\n❌ Invalid quantity. Please enter a positive number next time.");
+            println!("\n Invalid quantity. Please enter a positive number next time.");
             return;
         }
     };
@@ -53,7 +54,8 @@ fn main() {
         total = (total as f32 - discount) as i32;
         println!("Discount Applied (5%): ₦{:.0}", discount);
     }
-
+    //print out price
+    println!("_____________________________________________________________________")
     println!("----------------CALCULATING TOTAL PRICE------------------------------");
     println!("Final Total: ₦{}", total);
     println!("Thank you for your order!");
